@@ -30,6 +30,7 @@ public class CardLayoutExample {
 	private JLabel imgHombre;
 	private JLabel lblAlien;
 	private JLabel imgAlien;
+	private JButton btnPanel4;
 
 	/**
 	 * Launch the application.
@@ -77,6 +78,10 @@ public class CardLayoutExample {
 		btnPanel3.addActionListener(new BtnPanelActionListener());
 		panel.add(btnPanel3);
 		
+		btnPanel4 = new JButton("Panel 4");
+		btnPanel4.addActionListener(new BtnPanelActionListener());
+		panel.add(btnPanel4);
+		
 		pnlContenido = new JPanel();
 		frame.getContentPane().add(pnlContenido, BorderLayout.CENTER);
 		pnlContenido.setLayout(new CardLayout(0, 0));
@@ -119,6 +124,9 @@ public class CardLayoutExample {
 		imgHombre.setIcon(new ImageIcon(CardLayoutExample.class.getResource("/_interface/431.png")));
 		imgHombre.setBounds(168, 30, 100, 115);
 		panel_3.add(imgHombre);
+		
+		MiPanelReutilizable panel_4 = new MiPanelReutilizable();
+		pnlContenido.add(panel_4, "Panel 4");
 	}
 	
 	private class BtnPanelActionListener implements ActionListener {
