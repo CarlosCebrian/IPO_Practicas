@@ -4,17 +4,25 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
 
 public class MiPanelReutilizable extends JPanel{
 	private JLabel lblAutor;
 	private JTextField textField;
 	private JButton btnDetalles;
 	private JButton btnLimpiar;
+	private Color color;
 	public MiPanelReutilizable() {
+		addMouseListener(new ThisMouseListener());
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{64, 313, 0, 0};
@@ -49,6 +57,7 @@ public class MiPanelReutilizable extends JPanel{
 		add(btnDetalles, gbc_btnDetalles);
 		
 		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new BtnLimpiarActionListener());
 		GridBagConstraints gbc_btnLimpiar = new GridBagConstraints();
 		gbc_btnLimpiar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnLimpiar.gridx = 2;
@@ -57,4 +66,20 @@ public class MiPanelReutilizable extends JPanel{
 	}
 
 	
+	private class BtnLimpiarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			textField.setText("");
+		}
+	}
+	private class ThisMouseListener extends MouseAdapter {
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			color = getBackground();
+			setBackground(new Color(250,250,190));
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			setBackground(color);
+		}
+	}
 }

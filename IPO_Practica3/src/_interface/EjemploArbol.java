@@ -101,7 +101,7 @@ public class EjemploArbol {
 		pnlComponentesDinamicos = new MiPanelAutores();
 		panelCard.add(pnlComponentesDinamicos, "Ejemplo Componentes Dinámicos");
 
-		pnlLayoutDinamico = new JPanel();
+		pnlLayoutDinamico = new MiPanelGridConfigurable();
 		panelCard.add(pnlLayoutDinamico, "Ejemplo Layout Dinámico");
 	}
 
